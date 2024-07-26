@@ -14,8 +14,8 @@ import 'package:provider/provider.dart';
 
 /// Factory for [PersonalDataScreenWidgetModel].
 PersonalDataScreenWidgetModel fullNameScreenWidgetModelFactory(
-  BuildContext context,
-) {
+    BuildContext context,
+    ) {
   final appDependencies = context.read<IAppScope>();
   final model = PersonalDataScreenModel(
     appDependencies.profileBloc,

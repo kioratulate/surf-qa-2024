@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:surf_flutter_test/surf_flutter_test.dart';
@@ -19,14 +20,12 @@ final placeOfResidenceStepDefinitions = [
       await tester.implicitTap(placeOfResidenceTestScreen.listOfCities.first);
     },
   ),
-  /// конструкция для поиска текста наэкране который мы ввели ранее
-  // testerWhen<FlutterWidgetTesterWorld>(
-  //   RegExp(r'Я вижу указанный город$'),
-  //       (context, tester) async {
-  //     await tester.pumpUntilVisible(personalDataTestScreen.cityField);
-  //     final city = tester.widget<TextField>(personalDataTestScreen.cityField).controller?.text;
-  //     expect(city, "Voronezh");
-  //   },
-  // ),
-
+  testerWhen<FlutterWidgetTesterWorld>(
+    RegExp(r'Я вижу указанный город$'),
+        (context, tester) async {
+      await tester.pumpUntilVisible(placeOfResidenceTestScreen.residenceField);
+      final city = tester.widget<TextFormField>(placeOfResidenceTestScreen.residenceField).controller?.text;
+      expect(city, 'Voronezh');
+    },
+  ),
 ];
